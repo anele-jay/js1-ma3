@@ -1,0 +1,39 @@
+const getGames = "https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-rating";
+
+const displayGames = document.querySelector(".games");
+
+
+async function games() {
+  try{
+    const response = await fetch(getGames);
+
+    const results = await response.json();
+
+    const rez = results.results;
+
+    console.log(rez);
+
+    displayGames.innerHTML = "";
+
+    for(let i = 0; i < rez.length; i++) {
+        if(i === 8) {
+            break;
+        }
+
+        displayGames.innerHTML += `<div class="games"> 
+                                      <div class="">${rez[i].name}</div>
+                                          
+                                      <div class="">${rez[i].rating}</div>
+                                    </div>`
+                                         
+     }
+
+
+  }
+  catch(error) {
+      console.log(error);
+      displayGames.innerHTML = "An error has occured";
+  }
+}
+
+games();
