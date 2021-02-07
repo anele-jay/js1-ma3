@@ -1,0 +1,7 @@
+const division = (a , b) => {
+    return a / b;
+}
+
+const devided = division(a, b);
+
+console.log(devided);
